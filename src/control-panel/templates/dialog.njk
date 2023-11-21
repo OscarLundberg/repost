@@ -1,0 +1,30 @@
+{% import "macros.njk" as macro %}
+
+<button
+	type="button"
+	tabindex="0"
+	onclick="add('{{ name }}')"
+>
+	<span class="material-symbols-outlined"> add_circle </span>
+</button>
+
+<dialog id="dialog-form-{{ name }}">
+	<div class="dialog-content">
+		<div style="text-align: right">
+			<small>
+				<form method="dialog">
+					<button
+						type="submit"
+						style="background-color: transparent"
+						onfocus="this.blur()"
+					>
+						<span class="material-symbols-outlined"> close </span>
+					</button>
+				</form>
+			</small>
+		</div>
+		<b>{{ name | capitalize }}</b>
+		<br />
+		{{ macro.createForm(name, entityDict) }}
+	</div>
+</dialog>

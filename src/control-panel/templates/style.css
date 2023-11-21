@@ -1,0 +1,123 @@
+
+html {
+  overflow: hidden;
+}
+
+body {
+  max-width: unset;
+}
+
+button, button:hover {
+  background-color: transparent !important;
+  border: 1px solid transparent;
+  transition: border 0.5s ease;
+  margin: 0px auto;
+}
+button:hover {
+  border: 1px solid white;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  align-items: baseline;
+
+}
+
+.entity-list-anchor {
+  height: 100px !important;
+  visibility: hidden;
+  display: block;
+}
+
+.entity-list {
+  margin-bottom: 10px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.entity-list-main {
+  position: relative;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 15px;
+  margin: 15px;
+  width: 100%;
+  top: 50px;
+}
+
+nav {
+  z-index: 100;
+  position: fixed !important;
+}
+
+
+a:active {
+  font-weight: bold;
+}
+
+table {
+  display: table;
+  width: 100%;
+}
+
+th {
+  text-align: start;
+}
+
+td {
+  line-break: anywhere;
+}
+
+tr td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.dialog-content {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+textarea, input, select {
+  width: 97%;
+  margin-left: 2px;
+  max-width: 100%;
+  padding-right: 5px;
+}
+
+textarea {
+  font-family: monospace;
+}
+
+label {
+  padding-top: 15px;
+}
+
+form {
+  max-height: 70vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 97%;
+}
+
+label {
+  padding-bottom: 5px;
+}
+dialog {
+  width: 80%;
+  padding: 10px;
+  max-width: 650px;
+}
+dialog::backdrop {
+  background: #000000aa;
+}
+
+.t-center {
+  text-align: center;
+}

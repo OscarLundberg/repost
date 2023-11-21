@@ -1,0 +1,20 @@
+{% extends "base.njk" %} {% block body %} {% import "macros.njk" as macros %}
+
+<nav>
+	<h1><a href="/#docs"> rePOST</a></h1>
+		<a href="/#docs">Documentation</a>
+		{% for key, values in entityDict %}
+		/ <a href="/#{{ key }}-anchor">{{ key | capitalize }}</a> 
+		{% endfor %} 
+		/
+	</ul>
+</nav>
+<main>
+	{% include "docs.njk" %}
+	{% for key, values in entityDict %}
+	<br />
+	{{ macros.entityList(key, values, entityDict) }}
+	{% endfor %}
+</main>
+<footer></footer>
+{% endblock %}

@@ -1,0 +1,30 @@
+<form
+	action="/api/entries/create?formSubmit=true"
+	method="post"
+	id="form-entries"
+	enctype="application/x-www-form-urlencoded"
+>
+	<div>
+		<input type="hidden" name="id" readonly value="undefined"/>
+		<fieldset>
+			<label>Name: </label>
+			<input type="text" name="label" placeholder="Specify a name, for organizational purposes">
+			<label>Action: </label>
+			<select name="action" id="action" form="form-entries">
+				{% for item in entityDict["actions"] %}
+				<option value="{{ item.id }}">{{ item.label }}</option>
+				{% endfor %}
+			</select>
+
+			<label>Event: </label>
+			<select name="event" id="event" form="form-entries">
+				{% for item in entityDict["events"]%}
+				<option value="{{ item.id }}">{{ item.url }}</option>
+				{% endfor %}
+			</select>
+		</fieldset>
+	</div>
+	<div style="text-align: right">
+		<button type="submit">Submit</button>
+	</div>
+</form>

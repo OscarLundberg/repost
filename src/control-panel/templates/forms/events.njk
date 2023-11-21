@@ -1,0 +1,66 @@
+{% import "randoms.njk" as rnd %} {% import "randoms.njk" as rnd2 %}
+
+<form
+	action="/api/events/create?formSubmit=true"
+	method="post"
+	id="form-events"
+	enctype="application/x-www-form-urlencoded"
+>
+	<input type="hidden" name="id" readonly value="undefined" />
+	<label>Request</label>
+	<fieldset>
+		<div>
+			<label>Method: *</label>
+			<select name="method" form="form-events">
+				<option value="get" selected>GET</option>
+				<option value="post">POST</option>
+				<option value="put">PUT</option>
+				<option value="patch">PATCH</option>
+				<option value="delete">DELETE</option>
+			</select>
+		</div>
+		<label>Path: *</label>
+		<input
+			type="text"
+			name="url"
+			placeholder="/some-path"
+		/>
+	</fieldset>
+
+	<label>Data (json)</label>
+	<fieldset>
+		<label>Basic Auth:</label>
+		<textarea
+			name="auth"
+			cols="30"
+			rows="4"
+			form="form-events"
+			placeholder="{&#10;    &#34;username&#34;: &#34;test&#34;,&#10;    &#34;password&#34;: &#34;********&#34;&#10;}"
+		></textarea>
+		<label>Headers:</label>
+		<textarea
+			name="headers"
+			cols="30"
+			rows="3"
+			form="form-events"
+			placeholder="{&#10;    &#34;Content-Type&#34;: &#34;application/json&#34;&#10;}"
+		></textarea>
+		<label>Data:</label>
+		<textarea
+			name="data"
+			cols="30"
+			rows="3"
+			form="form-events"
+			placeholder="{&#10;    &#34;message&#34;: &#34;hello world&#34;&#10;}"
+		></textarea>
+		<label>Validation Strategy:</label>
+		<select name="validationStrategy" form="form-events">
+			<option value="none">None</option>
+			<option value="basic">Basic</option>
+		</select>
+	</fieldset>
+
+	<div style="text-align: right">
+		<button type="submit">Submit</button>
+	</div>
+</form>

@@ -1,0 +1,27 @@
+{% import "randoms.njk" as rnd %}
+{% import "randoms.njk" as rnd2 %}
+{% import "randoms.njk" as rnd3 %}
+
+const entityDefaults = {
+  actions: {
+    id: undefined,
+    label: "{{ rnd.verb | capitalize }} {{ rnd.prep | capitalize }} {{rnd.adjective | capitalize}} {{ rnd.noun | capitalize }}",
+    strategy: "javascript",
+    code: "",
+    url: "",
+  },
+  entries: {
+    id: undefined,
+    action: undefined,
+    event: undefined
+  },
+  events: {
+    id: undefined,
+    method: "get",
+    url: "/{{ rnd3.verb }}-{{rnd3.prep}}-{{ rnd3.adjective }}-{{ rnd3.noun }}",
+    auth: "",
+    headers: "",
+    data: "",
+    validationStrategy: 'none'
+  }
+}

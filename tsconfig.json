@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "allowUmdGlobalAccess": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "NodeNext",
+    "declaration": true
+  }
+}

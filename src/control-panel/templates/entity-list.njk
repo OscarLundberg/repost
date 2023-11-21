@@ -1,0 +1,68 @@
+{% import "macros.njk" as funcs %}
+
+<div class="entity-list">
+	<span class="entity-list-anchor" id="{{ name }}-anchor"></span>
+	<div class="entity-list-main">
+		<div class="row">
+			<h3>{{ name | capitalize }}</h3>
+			<div>
+				{{ funcs.dialog(name, entityDict) }}
+			</div>
+		</div>
+		<br>
+		<div class="fullwidth">
+			<table>
+				<thead>
+					{% set model = values | first %} 
+					{% for key, value in model
+					%}
+					<th>{{ key | capitalize }}</th>
+					{% endfor%}
+					<th class="t-center">Edit</th>
+					<th class="t-center">Delete</th>
+					<th class="t-center">Clone</th>
+				</thead>
+				{% for item in values %}
+					<tr>
+						{% for key, value in item %} {% set k = value | dump(4) %}
+							{% set t = value | dump | truncate(25) %}
+							<td>
+								{% if k | length >= 26 %}
+								{{ funcs.tooltip(k, t) }}
+								{% else %}
+								{{ k }}
+								{% endif %}
+							</td>
+						{% endfor%}
+						<td class="t-center">
+							{% set json = item | dump(2) | safe %}
+							<script>
+								const {{name}}{{item.id}} = {{json}}
+							</script>
+							<button onclick="edit({{ name }}{{ item.id }}, '{{name}}')">
+								<span class="material-symbols-outlined">edit</span>
+							</button>
+						</td>
+						<td class="t-center">
+							<button onclick="deleteEntity('{{ name }}', '{{ item.id }}')">
+								<span class="material-symbols-outlined">delete</span>
+							</button>
+						</td>
+						<td class="t-center">
+							<button onclick="clone({{ name }}{{ item.id }}, '{{name}}')">
+								<span class="material-symbols-outlined">content_copy</span>
+							</button>
+						</td>
+					</tr>
+				{% else %}
+				<tr>
+					<td>
+						<i>No data</i>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<hr />
+	</div>
+</div>

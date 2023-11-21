@@ -1,0 +1,27 @@
+{% macro entityList(name, values, entityDict) %} 
+  {% include "entity-list.njk" %} 
+{% endmacro %}
+
+{% macro dialog(name, entityDict) %} 
+  {% include "dialog.njk" %} 
+{% endmacro %}
+
+{% macro entries(key, entityDict) %}
+  {% include "forms/entries.njk" %}
+{% endmacro %}
+
+{% macro createForm(key, entityDict) %}
+  {% if key == "actions" %}
+    {% include "forms/actions.njk" %}
+  {% elif key == "events" %}
+    {% include "forms/events.njk" %}
+  {% else%}
+    {% include "forms/entries.njk" %}
+  {% endif%}
+{% endmacro %}
+
+{% macro tooltip(text="Tooltip", label="info") %}
+  <span class="tooltip" data-text="{{text}}">
+    {{label}}
+  </span>
+{% endmacro %}

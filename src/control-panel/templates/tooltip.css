@@ -1,0 +1,41 @@
+@media (prefers-color-scheme: dark) {
+  .tooltip {
+    border-bottom: 1px dashed #fff;
+  }
+}
+@media (prefers-color-scheme: light) {
+  .tooltip {
+    border-bottom: 1px dashed #000;
+  }
+}
+.tooltip:hover:before,
+.tooltip:hover:after {
+  display: block;
+}
+
+.tooltip {
+  position: relative; /* making the .tooltip span a container for the tooltip text */
+}
+.tooltip:before {
+  z-index: 1000;
+  content: attr(data-text); /* here's the magic */
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  margin-left: 15px;
+  margin-top: 15px;
+  /* basic styles */
+  min-width: 150px;
+  width: max-content;
+  max-width: 350px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+
+  display: none; /* hide by default */
+}
+.tooltip:hover:before {
+  display: block;
+}

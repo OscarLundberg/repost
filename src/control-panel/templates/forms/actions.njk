@@ -1,0 +1,74 @@
+{% import "macros.njk" as macros %} {% import "randoms.njk" as rnd %}
+
+<form
+	action="/api/actions/create?formSubmit=true"
+	method="post"
+	id="form-actions"
+	enctype="application/x-www-form-urlencoded"
+>
+	<div>
+		<input type="hidden" name="id" readonly value="undefined" />
+		<label>Name: *</label>
+		<input
+			type="text"
+			name="label"
+			placeholder="Specify a name, for organizational purposes"
+			required
+		/>
+		<label>Repost Target: *</label>
+		<input
+			type="text"
+			name="repostTarget"
+			placeholder="Specify target URL for repost"
+			required
+		/>
+		<label
+			>{{
+				macros.tooltip(
+					"Specify the evaluation strategy used to generate the request. See documentation for more info.",
+					"Strategy:"
+				)
+			}}&nbsp;*</label
+		>
+
+		<select name="strategy" id="strategy" form="form-actions" required>
+			<optgroup label="Built-in Agent">
+				<option value="javascript">JavaScript</option>
+				<option value="staticMode">Static</option>
+			</optgroup>
+		</select>
+		<br />
+		<label>{{
+			macros.tooltip(
+				"Either paste your source code or specify a URL to load from. The url will be used if both fields are filled.",
+				"Source Code:"
+			)
+		}}</label>
+		<fieldset>
+			<label>{{
+				macros.tooltip(
+					"The requested resource should have a content-type of 'text/plain' or 'text/html'",
+					"URL:"
+				)
+			}}</label>
+			<input
+				type="text"
+				name="url"
+				placeholder="https://raw.github.com/username/project/master/script.js"
+			/>
+			<br />
+			<label>Code:</label>
+			<textarea
+				style="resize: vertical"
+				placeholder="event.headers['authorization'] = 'Bearer eyJhbGciOiJIUzI1NiIsInR5c';&#10;event.url = 'https://mydomain.com/api/dosomething'&#10;repost(event);"
+				name="code"
+				id=""
+				cols="30"
+				rows="5"
+			></textarea>
+		</fieldset>
+	</div>
+	<div style="text-align: right">
+		<button type="submit">Submit</button>
+	</div>
+</form>
